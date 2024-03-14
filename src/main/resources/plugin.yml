@@ -1,0 +1,12 @@
+name: ArenaProtector
+version: '${version}'
+author: GreenedDev
+main: net.multylands.plugins.ArenaProtector
+api-version: '1.20'
+commands:
+  disablearenaprotection:
+    aliases:
+      - disableprotectionarena
+  reloadarenaprotection:
+    aliases:
+      - reloadprotectionarena

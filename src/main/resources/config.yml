@@ -1,0 +1,25 @@
+#0 - blacklist mode
+#1 - whitelist mode
+#if chosen blacklist, only the areas entered below will not be protected.
+#if chosen whitelist, only the areas that are entered below will be protected.
+mode: 0
+
+ExcludedLocations:
+  #please enter same name of the world in the pos1 pos2. The pos1 and pos2 is the coordinates of the corners.
+  1:
+    pos1:
+      ==: org.bukkit.Location
+      world: world
+      x: 100.0
+      y: 70.0
+      z: 100.0
+      pitch: 0.0
+      yaw: 90.0
+    pos2:
+      ==: org.bukkit.Location
+      world: world
+      x: 90.0
+      y: 80.0
+      z: 100.0
+      pitch: 0.0
+      yaw: -90.0
