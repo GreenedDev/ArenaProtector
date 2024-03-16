@@ -4,6 +4,19 @@
 #if chosen whitelist, only the areas that are entered below will be protected.
 mode: 0
 
+break-deny: "&cYou can't destroy blocks of the arena map."
+no-perm: "&cYou don't have permission to execute this command!"
+only-player: "&cExecutor must be player!"
+command-usage: "&cUsage: /%label%"
+admin-bypass-on: "&aProtection bypass enabled for &b%player%"
+admin-bypass-off: "&cProtection bypass disabled for &b%player%"
+reload-success: "&aConfig has been reloaded successfully!"
+help:
+  - "&aArena Protector Commands:"
+  - "&b/arenaprotector &7- &aDisplays this message."
+  - "&b/arenaprotector bypass &7- &aToggle bypass mode."
+  - "&b/arenaprotector reload &7- &aReload the configuration."
+
 ExcludedLocations:
   #please enter same name of the world in the pos1 pos2. The pos1 and pos2 is the coordinates of the corners.
   1:

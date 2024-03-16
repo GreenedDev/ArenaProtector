@@ -21,14 +21,14 @@ public class BlocksListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (ArenaProtector.playersWhoHaveProtectionDisabled.contains(player.getUniqueId())) {
+        if (ArenaProtector.playersWhoBypassEnabled.contains(player.getUniqueId())) {
             return;
         }
         Block block = event.getBlock();
         Location blockLocation = block.getLocation();
         //0 - blacklist mode
         //1 - whitelist mode
-        //if chosen blacklist 0, the areas entered below will not be protected.
+        //if chosen blacklist 0, only the areas entered below will not be protected.
         //if chosen whitelist 1, only the areas that are entered below will be protected.
         int mode = plugin.getConfig().getInt("mode");
         if (mode == 0) {
@@ -60,7 +60,7 @@ public class BlocksListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if (ArenaProtector.playersWhoHaveProtectionDisabled.contains(player.getUniqueId())) {
+        if (ArenaProtector.playersWhoBypassEnabled.contains(player.getUniqueId())) {
             return;
         }
         Block block = event.getBlock();
@@ -70,7 +70,7 @@ public class BlocksListener implements Listener {
         Location blockLocation = block.getLocation();
         //0 - blacklist mode
         //1 - whitelist mode
-        //if chosen blacklist 0, the areas entered below will not be protected.
+        //if chosen blacklist 0, only the areas entered below will not be protected.
         //if chosen whitelist 1, only the areas that are entered below will be protected.
         int mode = plugin.getConfig().getInt("mode");
         if (mode == 0) {
@@ -93,7 +93,7 @@ public class BlocksListener implements Listener {
                 return;
             }
         }
-        player.sendMessage(Utils.Color("&cYou can't destroy blocks of the arena map."));
+        player.sendMessage(Utils.Color(plugin.getConfig().getString("break-deny")));
         event.setCancelled(true);
     }
 }

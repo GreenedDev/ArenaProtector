@@ -14,16 +14,16 @@ public class ReloadCommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (args.length != 0) {
-            sender.sendMessage(Utils.Color("&cUsage: /"+label));
+        if (args.length != 1) {
+            sender.sendMessage(Utils.Color(plugin.getConfig().getString("command-usage").replace("%label%", label)));
             return false;
         }
         if (!sender.hasPermission("arenaprotector.reload")) {
-            sender.sendMessage(Utils.Color("&cYou don't have permission to execute this command!"));
+            sender.sendMessage(Utils.Color(plugin.getConfig().getString("no-perm")));
             return false;
         }
         plugin.customReloadConfig();
-        sender.sendMessage(Utils.Color("&aConfig has been reloaded successfully!"));
+        sender.sendMessage(Utils.Color(plugin.getConfig().getString("reload-success")));
         return false;
     }
 }
