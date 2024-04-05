@@ -4,6 +4,7 @@ import net.multylands.plugins.commands.ArenaProtectorCommand;
 import net.multylands.plugins.commands.BypassCommand;
 import net.multylands.plugins.commands.ReloadCommand;
 import net.multylands.plugins.listeners.BlocksListener;
+import net.multylands.plugins.utils.ArenaUtils;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
@@ -28,25 +29,20 @@ public final class ArenaProtector extends JavaPlugin {
         commandExecutors.put("bypass", new BypassCommand(this));
         commandExecutors.put("reload", new ReloadCommand(this));
         saveDefaultConfig();
-        loadAreas();
+        ArenaUtils.loadAreas(this);
 
     }
+
     public void customReloadConfig() {
         reloadConfig();
         excludedAreas.clear();
-        loadAreas();
+        ArenaUtils.loadAreas(this);
     }
+
     @Override
     public void onDisable() {
         for (Block block : blockList) {
             block.breakNaturally();
-        }
-    }
-    public void loadAreas() {
-        for (String keyNumber : getConfig().getConfigurationSection("ExcludedLocations").getKeys(false)) {
-            Location pos1 = getConfig().getLocation("ExcludedLocations."+keyNumber+".pos1");
-            Location pos2 = getConfig().getLocation("ExcludedLocations."+keyNumber+".pos2");
-            excludedAreas.put(pos1, pos2);
         }
     }
 }

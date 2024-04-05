@@ -4,6 +4,9 @@
 #if chosen whitelist, only the areas that are entered below will be protected.
 mode: 0
 
+#how many minutes after should player placed blocks break?
+despawn-delay: 30
+
 break-deny: "&cYou can't destroy blocks of the arena map."
 no-perm: "&cYou don't have permission to execute this command!"
 only-player: "&cExecutor must be player!"
@@ -16,23 +19,20 @@ help:
   - "&b/arenaprotector &7- &aDisplays this message."
   - "&b/arenaprotector bypass &7- &aToggle bypass mode."
   - "&b/arenaprotector reload &7- &aReload the configuration."
+#list of blocks that can be broken even on protected area.
+whitelist-blocks:
+  - yellow_stained_glass
 
 ExcludedLocations:
   #please enter same name of the world in the pos1 pos2. The pos1 and pos2 is the coordinates of the corners.
   1:
     pos1:
-      ==: org.bukkit.Location
       world: world
       x: 100.0
       y: 70.0
       z: 100.0
-      pitch: 0.0
-      yaw: 90.0
     pos2:
-      ==: org.bukkit.Location
       world: world
       x: 90.0
       y: 80.0
       z: 100.0
-      pitch: 0.0
-      yaw: -90.0
